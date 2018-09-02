@@ -15,4 +15,5 @@
     <string name="reset_quiz">重置测验</string>
     <string name="image_description">测验当前标志的图像</string>
     <string name="default_region">北美</string>
+    <string name="title_activity_settings">设置</string>
 </resources>
