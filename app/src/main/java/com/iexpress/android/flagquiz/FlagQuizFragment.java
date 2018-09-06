@@ -1,5 +1,6 @@
 package com.iexpress.android.flagquiz;
 
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,5 +19,14 @@ public class FlagQuizFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_flag_quiz, container, false);
+    }
+
+    public void updateGuessRows(SharedPreferences sharedPreferences) {
+    }
+
+    public void resetQuiz() {
+    }
+
+    public void updateRegions(SharedPreferences sharedPreferences) {
     }
 }
