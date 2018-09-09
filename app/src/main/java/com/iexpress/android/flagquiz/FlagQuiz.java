@@ -6,10 +6,8 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -66,6 +64,8 @@ public class FlagQuiz extends AppCompatActivity {
             quizFragment.updateGuessRows(PreferenceManager.getDefaultSharedPreferences(this));
 
             quizFragment.updateRegions(PreferenceManager.getDefaultSharedPreferences(this));
+
+            quizFragment.updateNumberOfQuestions(PreferenceManager.getDefaultSharedPreferences(this));
 
             quizFragment.resetQuiz();
 
@@ -127,6 +127,10 @@ public class FlagQuiz extends AppCompatActivity {
 
                             Toast.makeText(FlagQuiz.this, R.string.default_region_message, Toast.LENGTH_SHORT).show();
                         }
+                    } else if (key.equals(QUESTIONS)) {
+                        // when questions reset, no need to reset game?  (but that is risky, because what if perference changed to FEWER questions, how game finish, never)
+                        quizFragment.updateNumberOfQuestions(sharedPreferences);
+                        quizFragment.resetQuiz();
                     }
 
                     Toast.makeText(FlagQuiz.this, R.string.restarting_quiz, Toast.LENGTH_SHORT).show();

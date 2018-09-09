@@ -40,8 +40,6 @@ import java.util.Set;
 public class FlagQuizFragment extends Fragment {
     private static final String TAG = "FlagQuiz Activity";
 
-    private static final int FLAGS_IN_QUIZ = 3;  // for dev test, change from 10 to 3 to speed up test runs.
-
     private List<String> fileNameList;
     private List<String> quizCountriesList;
     private Set<String> regionsSet;
@@ -49,6 +47,7 @@ public class FlagQuizFragment extends Fragment {
     private int totalGuesses;
     private int correctAnswers;
     private int guessRows;
+    private int numberOfQuestions;
     private SecureRandom random;
     private Handler handler;  // to delay loading next flag
     private Animation shakeAnimation;
@@ -99,7 +98,7 @@ public class FlagQuizFragment extends Fragment {
             }
         }
 
-        questionNumberTextView.setText(getString(R.string.question, 1, FLAGS_IN_QUIZ));
+        questionNumberTextView.setText(getString(R.string.question, 1, numberOfQuestions));
 
         return view;
     }
@@ -121,6 +120,11 @@ public class FlagQuizFragment extends Fragment {
 
     public void updateRegions(SharedPreferences sharedPreferences) {
         regionsSet = sharedPreferences.getStringSet(FlagQuiz.REGIONS, null);
+    }
+
+    public void updateNumberOfQuestions(SharedPreferences sharedPreferences) {
+        String questions = sharedPreferences.getString(FlagQuiz.QUESTIONS, null);
+        numberOfQuestions = Integer.parseInt(questions);
     }
 
     public void resetQuiz() {
@@ -145,7 +149,7 @@ public class FlagQuizFragment extends Fragment {
         int flagCounter = 1;
         int numberOfFlags = fileNameList.size();
 
-        while (flagCounter <= FLAGS_IN_QUIZ) {
+        while (flagCounter <= numberOfQuestions) {
             int randomIdx = random.nextInt(numberOfFlags);
 
             String filename = fileNameList.get(randomIdx);
@@ -179,7 +183,7 @@ public class FlagQuizFragment extends Fragment {
 
                 disableButtons();
 
-                if (correctAnswers == FLAGS_IN_QUIZ) {
+                if (correctAnswers == numberOfQuestions) {
 
                     AlertDialog.Builder build = new AlertDialog.Builder(getContext());
 
@@ -299,7 +303,7 @@ public class FlagQuizFragment extends Fragment {
 
         // display current question number
         questionNumberTextView.setText(getString(
-                R.string.question, (correctAnswers + 1), FLAGS_IN_QUIZ));
+                R.string.question, (correctAnswers + 1), numberOfQuestions));
 
         // extract the region from the next image's name
         String region = nextImage.substring(0, nextImage.indexOf('-'));
