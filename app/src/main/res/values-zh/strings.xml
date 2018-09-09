@@ -7,11 +7,11 @@
     <string name="world_regions">地区</string>
     <string name="world_regions_description">包含在测验中的区域</string>
     <string name="guess_country">猜猜国家</string>
-    <string name="results">％1 $ d猜测，％2 $ .02f %%正确</string>
+    <string name="results" formatted="true">％1$d 猜测，％2$.02f %%正确</string>
     <string name="incorrect_answer">不正确！</string>
     <string name="default_region_message">必须选择一个区域。 将北美设为默认区域。</string>
     <string name="restarting_quiz">测验将重新启动, 使用您的新设置。</string>
-    <string name="question">％2 $ d问题中的％1 $ d</string>
+    <string name="question" formatted="true">％2$d 问题中的 ％1$d</string>
     <string name="reset_quiz">重置测验</string>
     <string name="image_description">测验当前标志的图像</string>
     <string name="default_region">北美</string>
