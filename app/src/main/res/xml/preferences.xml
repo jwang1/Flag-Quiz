@@ -19,4 +19,10 @@
         android:persistent="true"
         android:defaultValue="@array/regions_list"
         />
+    <ListPreference
+        android:defaultValue="6"
+        android:entries="@array/number_questions"
+        android:entryValues="@array/number_questions"
+        android:key="pref_numberOfQuestions"
+        android:title="@string/number_questions" />
 </PreferenceScreen>

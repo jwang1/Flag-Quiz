@@ -21,6 +21,7 @@ public class FlagQuiz extends AppCompatActivity {
     // keys for reading data from SharedPreferences
     public static final String CHOICES = "pref_numberOfChoices";
     public static final String REGIONS = "pref_regionsToInclude";
+    public static final String QUESTIONS = "pref_numberOfQuestions";
 
     // used to force portrait mode
     private boolean phoneDevice = true;
